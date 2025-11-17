@@ -26,8 +26,6 @@ const AnalyticsPage: React.FC = () => {
       const response = await termsApi.list({ limit: 10000 });
       const allTerms = response.data;
 
-      setTerms(allTerms);
-
       // Calculate statistics
       const categories: Record<string, number> = {};
       const tags: Record<string, number> = {};
