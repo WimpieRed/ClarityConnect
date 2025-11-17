@@ -1,76 +1,93 @@
-# ClarityConnect - Netlify Deployment Guide
+# ClarityConnect - Deployment Guide
 
-## Frontend Deployment to Netlify (Mock Data)
+## Deploy to GitHub → Netlify (Recommended)
 
-This guide will help you deploy the ClarityConnect frontend to Netlify using mock data (no backend required).
+This guide will help you deploy ClarityConnect to GitHub and then automatically deploy to Netlify using mock data (no backend required).
 
 ### Prerequisites
 
-1. A Netlify account (sign up at https://www.netlify.com)
-2. Node.js installed on your machine
-3. Your code ready to deploy
+1. A GitHub account (sign up at https://github.com)
+2. A Netlify account (sign up at https://www.netlify.com)
+3. Git installed on your machine
+4. Your code ready to deploy
 
-### Quick Deployment Steps (Netlify CLI)
+### Step 1: Push to GitHub
 
-1. **Install Netlify CLI:**
+1. **Create a new repository on GitHub:**
+   - Go to https://github.com/new
+   - Repository name: `ClarityConnect` (or your preferred name)
+   - Choose Public or Private
+   - **Do NOT** initialize with README, .gitignore, or license (we already have these)
+   - Click "Create repository"
+
+2. **Push your code to GitHub:**
    ```bash
-   npm install -g netlify-cli
+   cd /Users/wimpien/Documents/PlasmaMind/ClarityConnect
+   git remote add origin https://github.com/YOUR_USERNAME/ClarityConnect.git
+   git branch -M main
+   git push -u origin main
    ```
+   Replace `YOUR_USERNAME` with your GitHub username.
 
-2. **Login to Netlify:**
-   ```bash
-   netlify login
-   ```
-   This will open your browser to authenticate.
+### Step 2: Deploy to Netlify from GitHub
 
-3. **Navigate to project root:**
-   ```bash
-   cd /path/to/ClarityConnect
-   ```
+1. **Log in to Netlify:**
+   - Go to https://app.netlify.com
+   - Sign in or create an account
 
-4. **Initialize Netlify:**
-   ```bash
-   netlify init
-   ```
-   When prompted:
-   - **Create & configure a new site** (choose this if it's your first deployment)
-   - **Team:** Select your team
-   - **Site name:** Enter a name (e.g., `clarityconnect`) or press Enter for a random name
-   - **Build command:** `npm install && npm run build` (or just press Enter to use default)
-   - **Directory to deploy:** `frontend/build` (or just press Enter to use default)
+2. **Import from Git:**
+   - Click "Add new site" → "Import an existing project"
+   - Choose "GitHub" (or GitLab/Bitbucket if you used those)
+   - Authorize Netlify to access your repositories
+   - Select your `ClarityConnect` repository
 
-5. **Deploy to production:**
-   ```bash
-   netlify deploy --prod
-   ```
+3. **Configure build settings:**
+   Netlify should auto-detect from `netlify.toml`, but verify:
+   - **Base directory:** `frontend`
+   - **Build command:** `npm install && npm run build`
+   - **Publish directory:** `frontend/build`
 
-   That's it! Your site will be live at `https://your-site-name.netlify.app`
+4. **Deploy:**
+   - Click "Deploy site"
+   - Netlify will build and deploy your site
+   - Your site will be live at `https://random-name.netlify.app`
+
+### Step 3: Customize Your Site (Optional)
+
+1. **Change site name:**
+   - Go to Site settings → General → Site details
+   - Click "Change site name"
+   - Enter your preferred name (e.g., `clarityconnect`)
+
+2. **Set up custom domain:**
+   - Go to Domain settings
+   - Click "Add custom domain"
+   - Follow DNS configuration instructions
 
 ### What Happens
 
-- Netlify will run `npm install` and `npm run build` in the `frontend` directory
-- The built files will be published from `frontend/build`
+- Netlify automatically detects your `netlify.toml` configuration
+- Builds your React app in the `frontend` directory
+- Publishes from `frontend/build`
 - Since `USE_MOCK_DATA = true` in `api.ts`, no backend is needed
 - All features work with mock data
 
-### Future Deployments
+### Continuous Deployment
 
-After the initial setup, you can deploy updates with:
+Once connected to GitHub:
+- **Automatic deploys:** Every push to `main` branch triggers a new deployment
+- **Deploy previews:** Pull requests get preview URLs automatically
+- **Branch deploys:** Deploy from any branch for testing
+
+### Future Updates
+
+Simply push to GitHub:
 ```bash
-netlify deploy --prod
+git add .
+git commit -m "Your update message"
+git push
 ```
-
-Or test a draft deployment first:
-```bash
-netlify deploy
-```
-This creates a draft URL you can preview before going live.
-
-### View Your Site
-
-After deployment, Netlify will show you the live URL. You can also:
-- Visit your Netlify dashboard: https://app.netlify.com
-- Find your site and click to view it
+Netlify will automatically build and deploy!
 
 ### Troubleshooting
 
