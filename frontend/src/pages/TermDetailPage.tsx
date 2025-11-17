@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { termsApi, versionsApi } from '../services/api';
-import { Term, TermVersion, VersionComparison } from '../types';
+import { Term, VersionComparison } from '../types';
 import { mockTerms } from '../services/mockData';
 import { TermDetailSkeleton } from '../components/LoadingSkeleton/LoadingSkeleton';
 import { FavoriteButton } from '../components/Favorites/FavoriteButton';
@@ -215,8 +215,8 @@ const TermDetailPage: React.FC = () => {
           <h2 className="text-xl font-semibold text-brand-dark mb-4">Version History</h2>
           <VersionHistory
             termId={term.id}
-            onViewVersion={(version) => {
-              setCurrentVersion(version);
+            onViewVersion={() => {
+              // Version viewing handled in VersionHistory component
             }}
             onCompareVersion={async (version) => {
               try {
