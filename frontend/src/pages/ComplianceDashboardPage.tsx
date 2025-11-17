@@ -17,6 +17,7 @@ const ComplianceDashboardPage: React.FC = () => {
     loadDashboard();
     loadTerms();
     loadGaps();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedFramework]);
 
   const loadDashboard = async () => {

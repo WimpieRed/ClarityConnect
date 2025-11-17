@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useFavorites } from '../../hooks/useFavorites';
 
 interface Comment {
   id: string;
@@ -22,6 +21,7 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({ termId }) => {
 
   useEffect(() => {
     loadComments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [termId]);
 
   const loadComments = () => {

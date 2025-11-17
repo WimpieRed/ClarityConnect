@@ -18,12 +18,14 @@ const ClusterDashboardPage: React.FC = () => {
   useEffect(() => {
     loadClusters();
     loadCoverage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (selectedCluster) {
       loadClusterData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCluster]);
 
   const loadClusters = async () => {

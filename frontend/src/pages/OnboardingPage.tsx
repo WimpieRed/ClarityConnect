@@ -19,6 +19,7 @@ const OnboardingPage: React.FC = () => {
     if (role) {
       loadPath();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [role, cluster]);
 
   const loadProgress = async () => {

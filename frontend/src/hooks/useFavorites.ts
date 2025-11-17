@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Term } from '../types';
 
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState<string[]>([]);

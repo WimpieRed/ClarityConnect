@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { termsApi } from '../../services/api';
-import { Term, CreateTermRequest, UpdateTermRequest } from '../../types';
+import { CreateTermRequest, UpdateTermRequest } from '../../types';
 
 interface TermFormProps {
   termId?: string;
@@ -29,6 +29,7 @@ export const TermForm: React.FC<TermFormProps> = ({ termId, onSuccess }) => {
     if (termId) {
       loadTerm();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [termId]);
 
   const loadTerm = async () => {

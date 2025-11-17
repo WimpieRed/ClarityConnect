@@ -12,9 +12,9 @@ const SearchPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [total, setTotal] = useState(0);
-  const [category, setCategory] = useState('');
-  const [cluster, setCluster] = useState('');
-  const [system, setSystem] = useState('');
+  const [category] = useState('');
+  const [cluster] = useState('');
+  const [system] = useState('');
   const { department } = useUser();
 
   // Legacy search handler - kept for compatibility but AdvancedSearch handles search now

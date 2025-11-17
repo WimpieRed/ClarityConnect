@@ -33,6 +33,7 @@ export const AdvancedSearch: React.FC<AdvancedSearchProps> = ({ onResults, onSea
     } else {
       setSuggestions([]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   const loadFacets = async () => {

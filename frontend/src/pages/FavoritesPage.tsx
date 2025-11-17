@@ -12,6 +12,7 @@ const FavoritesPage: React.FC = () => {
 
   useEffect(() => {
     loadFavorites();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [favorites]);
 
   const loadFavorites = async () => {

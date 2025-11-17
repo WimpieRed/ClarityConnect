@@ -16,12 +16,12 @@ const TermDetailPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [showVersionHistory, setShowVersionHistory] = useState(false);
   const [comparison, setComparison] = useState<VersionComparison | null>(null);
-  const [currentVersion, setCurrentVersion] = useState<TermVersion | null>(null);
 
   useEffect(() => {
     if (id) {
       loadTerm();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const loadTerm = async () => {

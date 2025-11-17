@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { termsApi } from '../../services/api';
-import { Term } from '../../types';
 import { exportToCSV, exportToJSON, exportToPDF, importFromCSV } from '../../utils/exportUtils';
 
 interface ExportImportCompactProps {

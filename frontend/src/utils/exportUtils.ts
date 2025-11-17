@@ -47,7 +47,6 @@ export const importFromCSV = async (file: File): Promise<Term[]> => {
       try {
         const text = e.target?.result as string;
         const lines = text.split('\n');
-        const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim());
         
         const terms: Term[] = [];
         for (let i = 1; i < lines.length; i++) {

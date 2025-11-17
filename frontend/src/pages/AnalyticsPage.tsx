@@ -3,7 +3,6 @@ import { termsApi, analyticsApi } from '../services/api';
 import { Term, GapAnalytics, ClusterCoverage } from '../types';
 
 const AnalyticsPage: React.FC = () => {
-  const [terms, setTerms] = useState<Term[]>([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     totalTerms: 0,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { gapApi, clusterApi, analyticsApi } from '../services/api';
-import { GapAnalysis, Cluster, GapAnalytics, ClusterCoverage } from '../types';
+import { GapAnalysis, GapAnalytics, ClusterCoverage } from '../types';
 import { GapFilters } from '../components/GapAnalysis/GapFilters';
 import { GapList } from '../components/GapAnalysis/GapList';
 import { CoverageMatrix } from '../components/GapAnalysis/CoverageMatrix';
@@ -26,6 +26,7 @@ const GapAnalysisPage: React.FC = () => {
     loadGaps();
     loadAnalytics();
     loadCoverage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, gapType, cluster, severity, resolved]);
 
   const loadClusters = async () => {
