@@ -29,10 +29,12 @@ const TermsPage: React.FC = () => {
       setDepartment(savedDepartment);
       setSavedDepartment('');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showAll]);
 
   useEffect(() => {
     loadTerms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, category, showAll, department]);
 
   const loadTerms = async () => {
